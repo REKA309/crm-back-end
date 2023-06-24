@@ -85,6 +85,19 @@ EmployeeRouter.post("/createEmployee",async function (req, response) {
       response.status(500).send('An error occurred');
     }
   });
+  // GET METHOD TO RETRIEVE SPECIFIC MANAGER EMPLOYEES
+  EmployeeRouter.get('/viewMangersEmp',async function(req,res){
+    try{
+      const {managerEmail}=req.body;
+      const Employee = await EmployeeModal.find({managerEmail:managerEmail});
+          res.status(200).json(Employee);
+    }
+    catch(error)
+    {
+      console.error('Error updating data in MongoDB:', error);
+      res.status(500).json({ error: 'Error updating data in MongoDB' });
+    }
+  })
   //POST METHOD TO DELETE EMPLOYEE
 EmployeeRouter.post('/deleteEmployee',async function (req,response)
 {
