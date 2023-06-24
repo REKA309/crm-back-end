@@ -231,9 +231,9 @@ EmployeeRouter.get('/viewTasks/:employeeId',async function (req,res){
       }
 })
 // GET METHOD FOR QUERIES
-EmployeeRouter.get('/view/employees/queries',async function(req,res){
+EmployeeRouter.get('/view/employees/queries/:managerEmail',async function(req,res){
   try{
-    const {managerEmail}=req.body
+    const {managerEmail}=req.params
   const userExistingData = await EmployeeModal.find(
     { managerEmail: managerEmail },
   );
