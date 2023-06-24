@@ -86,9 +86,9 @@ EmployeeRouter.post("/createEmployee",async function (req, response) {
     }
   });
   // GET METHOD TO RETRIEVE SPECIFIC MANAGER EMPLOYEES
-  EmployeeRouter.get('/viewMangersEmp',async function(req,res){
+  EmployeeRouter.get('/viewMangersEmp/:managerEmail',async function(req,res){
     try{
-      const {managerEmail}=req.body;
+      const {managerEmail}=req.params;
       const Employee = await EmployeeModal.find({managerEmail:managerEmail});
           res.status(200).json(Employee);
     }
